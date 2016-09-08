@@ -29,8 +29,8 @@ namespace TicketMaker
             mImages.Clear();
             try
             {
-                var lPath = "Vstupenka2016otoWoMan.pdf";
-                var lOriginFile = "vstupenka2016otoWoMan.jpg";
+                var lPath = mTbOutputPath.Text;
+                var lOriginFile = mTbInputPath.Text;
 
                 var lImage = System.Drawing.Image.FromFile(lOriginFile);
 
@@ -62,7 +62,7 @@ namespace TicketMaker
             catch (Exception exc)
             {
                 MessageBox.Show(
-                    "Neco se nezdarilo! Pravdepodobne mate otevreny soubor, do ktereho se maji vstupenky ulozit.\nZobrazte toto prosím autorovi aplikace:\n" +
+                    @"Neco se nezdarilo! Pravdepodobne mate otevreny soubor, do ktereho se maji vstupenky ulozit.\nZobrazte toto prosím autorovi aplikace:\n" +
                     exc);
             }
         }
@@ -104,10 +104,36 @@ namespace TicketMaker
                 return;
             }
 
-            this.Text = Title + " => " + aCurrentValue + " of " + aMaxValue;
+            this.Text = Title + @" => " + aCurrentValue + @" of " + aMaxValue;
 
             this.mProgressBarCreated.Maximum = Convert.ToInt32(aMaxValue);
             this.mProgressBarCreated.Value = Convert.ToInt32(aCurrentValue);
+        }
+
+        private void mBtnInputPath_Click(object sender, EventArgs e)
+        {
+            var lDialogResult = mOpenFileDialogInput.ShowDialog();
+            if(lDialogResult.Equals(DialogResult.OK))
+            {
+                mTbInputPath.Text = mOpenFileDialogInput.FileName;
+            }
+        }
+
+        private void mBtnOutputPath_Click(object sender, EventArgs e)
+        {
+            var lDialogResult = mSaveFileDialogOutput.ShowDialog();
+            if (lDialogResult.Equals(DialogResult.OK))
+            {
+                mTbOutputPath.Text = mSaveFileDialogOutput.FileName;
+            }
+        }
+
+        private void mTbInputOutput_TextChanged(object sender, EventArgs e)
+        {
+            if (mTbInputPath.Text != "" && mTbOutputPath.Text != "" && File.Exists(mTbInputPath.Text))
+                mBtnCreate.Enabled = true;
+            else
+                mBtnCreate.Enabled = false;
         }
     }
 }
