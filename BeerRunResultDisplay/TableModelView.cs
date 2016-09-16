@@ -20,7 +20,7 @@ namespace BeerRunResultDisplay
             set
             {
                 mTeams = value;
-                NotifyPropertyChanged("Teams");
+                UpdateTeams();
             }
         }
 
@@ -49,7 +49,7 @@ namespace BeerRunResultDisplay
             if (aNewTeam != null)
             {
                 Teams.Add(aNewTeam);
-                NotifyPropertyChanged("Teams");
+                UpdateTeams();
             }
         }
 
@@ -62,7 +62,7 @@ namespace BeerRunResultDisplay
             if(aExistingTeam != null && this.Teams.Contains(aExistingTeam))
             {
                 this.Teams.Remove(aExistingTeam);
-                NotifyPropertyChanged("Teams");
+                UpdateTeams();
             }
         }
 
@@ -104,6 +104,15 @@ namespace BeerRunResultDisplay
             {
                 throw lEx;
             }
+        }
+
+        /// <summary>
+        /// Metoda která by měla obsloužit jakoukoli změnu nad listem týmů
+        /// </summary>
+        public void UpdateTeams()
+        {
+            Teams.Sort();
+            NotifyPropertyChanged("Teams");
         }
     }
 }

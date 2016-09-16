@@ -13,6 +13,11 @@ namespace BeerRunResultDisplay
     public partial class FormMain : Form
     {
         private TableModelView mTableModelView = new TableModelView();
+        public TableModelView TableModelView
+        {
+            get { return this.mTableModelView; }
+            private set { this.mTableModelView = value; }
+        }
 
         public FormMain()
         {
@@ -56,7 +61,7 @@ namespace BeerRunResultDisplay
         private void mTBoxFilePathXMLResult_TextChanged(object sender, EventArgs e)
         {
             string path = mTBoxFilePathXMLResult.Text.Substring(0, mTBoxFilePathXMLResult.Text.LastIndexOf('\\'));
-            if (mTBoxFilePathXMLResult.Text != "" && System.IO.Directory.Exists(path) && mTBoxFilePathXMLResult.Text.ToLower().Contains(".xml"))
+            if (mTBoxFilePathXMLResult.Text != "" && System.IO.Directory.Exists(path))
             {
                 mBtnLoadResults.Enabled = true;
                 mBtnSaveResults.Enabled = true;
@@ -66,6 +71,53 @@ namespace BeerRunResultDisplay
                 mBtnLoadResults.Enabled = false;
                 mBtnSaveResults.Enabled = false;
             }
+        }
+
+        /// <summary>
+        /// Otevření dalších oken pro úpravu/ukázání výsledků
+        /// </summary>
+        private void mBtnEditShowResults_Click(object sender, EventArgs e)
+        {
+            //BindingSource BindSrc = new BindingSource(mTableModelView, "TableModelView");
+            FormResultsDialog lFormResults = new FormResultsDialog(this);
+            lFormResults.Show();
+        }
+
+        /// <summary>
+        /// Zobrazí dialogové okno pro přidání týmu
+        /// </summary>
+        private void mBtnAddNewTeam_Click(object sender, EventArgs e)
+        {
+            var lNewTeamForm = new FormNewTeam();
+            DialogResult lDialogResult = lNewTeamForm.ShowDialog();
+            if(lDialogResult.Equals(DialogResult.OK))
+            {
+                this.TableModelView.Add(lNewTeamForm.Team);
+            }
+        }
+
+        /// <summary>
+        /// Uložení týmů při zavření
+        /// </summary>
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mTableModelView.SaveState(System.IO.Path.GetTempPath()+"otomanPivniBeh-temp"+DateTime.Now.ToString("hh-MM-ss") + ".xml");
+        }
+
+        /// <summary>
+        /// Formulář pro odebrání týmů
+        /// </summary>
+        private void mBtnDeleteTeam_Click(object sender, EventArgs e)
+        {
+            new FormDeleteTeam(this).ShowDialog();
+        }
+
+        /// <summary>
+        /// Pravidelné ukládání co 5 minut pokud je možno XML soubor uložit (je známa cesta)
+        /// </summary>        
+        private void mTimerSave5mins_Tick(object sender, EventArgs e)
+        {
+            mTableModelView.SaveState(System.IO.Path.GetTempPath() + "otomanPivniBeh-temp" + DateTime.Now.ToString("hh-MM-ss") + ".xml");
         }
     }
 }

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,18 +47,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormDeleteTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDeleteTeam.Designer.cs">
+      <DependentUpon>FormDeleteTeam.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormNewTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNewTeam.Designer.cs">
+      <DependentUpon>FormNewTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormResultsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResultsDialog.Designer.cs">
+      <DependentUpon>FormResultsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableModelView.cs" />
     <Compile Include="Team.cs" />
+    <EmbeddedResource Include="FormDeleteTEam.resx">
+      <DependentUpon>FormDeleteTeam.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNewTeam.resx">
+      <DependentUpon>FormNewTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResultsDialog.resx">
+      <DependentUpon>FormResultsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -67,7 +95,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\TableModelView.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,6 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OtaHead.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

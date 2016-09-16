@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace BeerRunResultDisplay
 {   
     [Serializable]
-    public class Team
+    public class Team : IComparable
     {
         [XmlElement(ElementName = "TeamName", Type = typeof(string))]
         public string TeamName { get; set; }
@@ -16,25 +16,42 @@ namespace BeerRunResultDisplay
         public DateTime StartTime { get; set; }
         [XmlElement(ElementName = "EndTime", Type = typeof(DateTime))]
         public DateTime EndTime { get; set; }
-        [XmlElement(ElementName = "PenaltyMinutes", Type = typeof(List<int>))]
-        public List<int> PenaltyMinutes { get; set; }
-        [XmlElement(ElementName = "TeamMembersName", Type = typeof(List<string>))]
-        public List<string> TeamMembersName { get; set; }
-
-        
-        public TimeSpan GetTotalTime()
+        [XmlElement(ElementName = "PenaltyMinutes", Type = typeof(int))]
+        public int PenaltyMinutes { get; set; }
+        [XmlElement(ElementName = "TeamMembersName", Type = typeof(string))]
+        public string TeamMembersName { get; set; }
+        [XmlIgnore]
+        public string TotalTime
         {
-            if(EndTime != null && StartTime != null)
+            get { return this.GetTotalTime.ToString(@"hh\:mm\:ss"); }
+        }
+        [XmlIgnore]
+        public TimeSpan GetTotalTime
+        {
+            get
             {
-                var lResult = EndTime - StartTime;
-                foreach (var nPenaltyMinute in PenaltyMinutes)
+                if (EndTime != null && StartTime != null)
                 {
-                    lResult.Add(new TimeSpan(0, (nPenaltyMinute), 0));
+                    var lResult = EndTime - StartTime;
+                    lResult = lResult.Add(new TimeSpan(0, PenaltyMinutes, 0));
+                    return lResult;
                 }
-
-                return lResult;
+                return new TimeSpan(23, 59, 59);
             }
-            return new TimeSpan(23, 59, 59);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Team)
+                return ((IComparable)GetTotalTime).CompareTo((obj as Team).GetTotalTime);
+            else
+                return 0;
+        }
+
+
+        public override string ToString()
+        {
+            return this.TeamName;
         }
     }
 }
