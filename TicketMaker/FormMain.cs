@@ -208,7 +208,6 @@ namespace TicketMaker
 
         #endregion
 
-
         #region [EatDrink ticket]
 
         /// <summary>
