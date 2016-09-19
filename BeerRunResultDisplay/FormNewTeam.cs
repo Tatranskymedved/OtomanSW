@@ -17,14 +17,14 @@ namespace BeerRunResultDisplay
         {
             InitializeComponent();
 
-            mTbStart.Text = DateTime.Today.Add(new TimeSpan(18,0,0)).ToString();
-            mTbEnd.Text = DateTime.Now.ToString();
+            mTbStart.Text = new TimeSpan(18,0,0).ToString();
+            mTbEnd.Text = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second).ToString();
         }
 
         private void mBtnAdd_Click(object sender, EventArgs e)
         {
-            DateTime lStart = DateTime.Parse(this.mTbStart.Text);
-            DateTime lEnd = DateTime.Parse(this.mTbEnd.Text);
+            TimeSpan lStart = TimeSpan.Parse(this.mTbStart.Text);
+            TimeSpan lEnd = TimeSpan.Parse(this.mTbEnd.Text);
 
             if(lStart>lEnd)
             {
@@ -37,8 +37,8 @@ namespace BeerRunResultDisplay
             {
                 TeamName = this.mTbTeamName.Text,
                 TeamMembersName = this.mTbTeamMembers.Text,
-                StartTime = DateTime.Parse(this.mTbStart.Text),
-                EndTime = DateTime.Parse(this.mTbEnd.Text),
+                StartTime = TimeSpan.Parse(this.mTbStart.Text),
+                EndTime = TimeSpan.Parse(this.mTbEnd.Text),
                 PenaltyMinutes = Convert.ToInt32(mNumUDPenaltyMinutes.Value)
             };
         }

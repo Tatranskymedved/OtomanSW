@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BindingListSortableExt.cs" />
     <Compile Include="TableModelView.cs" />
     <Compile Include="Team.cs" />
     <EmbeddedResource Include="FormDeleteTEam.resx">

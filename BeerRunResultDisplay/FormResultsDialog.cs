@@ -20,35 +20,8 @@ namespace BeerRunResultDisplay
             if (aParentForm != null)
             {
                 mParentForm = aParentForm;
-                mParentForm.TableModelView.PropertyChanged += TableModelView_PropertyChanged;
-                //this.mTableMain. = aParentForm.TableModelView;
-                RefreshTable();
-            }
-        }
-
-        private void TableModelView_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if(e.PropertyName == "Teams")
-            {
-                RefreshTable();
-            }
-        }
-
-        /// <summary>
-        /// Znovu načtení tabulky
-        /// </summary>
-        public void RefreshTable()
-        {
-            if (mParentForm != null)
-            {
-                try
-                {
-                    this.mTableMain.DataSource = null;
-                    this.mTableMain.DataSource = mParentForm.TableModelView.Teams;
-                }
-                catch
-                {
-                }
+                this.mTableMain.DataSource = mParentForm.TableModelView.Teams;
+                         
             }
         }
 
@@ -59,7 +32,7 @@ namespace BeerRunResultDisplay
         {
             if(e.RowIndex %2 == 1)
             {
-                e.CellStyle.BackColor = Color.YellowGreen;
+                e.CellStyle.BackColor = Color.LightGoldenrodYellow;
             }
         }
 
@@ -67,14 +40,26 @@ namespace BeerRunResultDisplay
         /// Při změně buňky v tabulce
         /// </summary>
         private void mTableMain_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {   
-            this.mParentForm.TableModelView.UpdateTeams();
+        {
+            this.mTableMain.Refresh();
         }
 
-        private void mTimerTableRefresh_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// Zobrazení headeru pro pořadí
+        /// </summary>
+        private void mTableMain_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            if(!this.mTableMain.IsCurrentCellInEditMode)
-                RefreshTable();
+            var lGrid = sender as DataGridView;
+            var lRowNum = (e.RowIndex + 1).ToString();
+
+            var lCenterFormat = new StringFormat()
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var lHeaderBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, lGrid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(lRowNum, this.Font, SystemBrushes.ControlText, lHeaderBounds, lCenterFormat);
         }
     }
 }

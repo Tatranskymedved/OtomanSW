@@ -21,7 +21,7 @@ namespace BeerRunResultDisplay
             if (aMainForm != null)
                 this.mFormMain = aMainForm;
 
-            RefreshCombo();
+            this.mComboBoxTeamName.DataSource = mFormMain.TableModelView.Teams;
         }
 
         private void mBtnDeleteTeam_Click(object sender, EventArgs e)
@@ -30,16 +30,6 @@ namespace BeerRunResultDisplay
             {
                 this.mFormMain.TableModelView.Remove(this.mComboBoxTeamName.SelectedItem as Team);
             }
-            RefreshCombo();
-        }
-
-        public void RefreshCombo()
-        {
-            if (this.mFormMain != null)
-            {
-                this.mComboBoxTeamName.DataSource = null;
-                this.mComboBoxTeamName.DataSource = mFormMain.TableModelView.Teams;
-            }
-        }
+        }        
     }
 }

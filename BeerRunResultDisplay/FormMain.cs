@@ -22,7 +22,14 @@ namespace BeerRunResultDisplay
         public FormMain()
         {
             InitializeComponent();
+
+            //AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
+
+        //private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        //{
+        //    MessageBox.Show((e.ExceptionObject as Exception).ToString());
+        //}
 
         /// <summary>
         /// Načtení výsledků ze souboru
@@ -109,7 +116,7 @@ namespace BeerRunResultDisplay
         /// </summary>
         private void mBtnDeleteTeam_Click(object sender, EventArgs e)
         {
-            new FormDeleteTeam(this).ShowDialog();
+            new FormDeleteTeam(this).Show();
         }
 
         /// <summary>

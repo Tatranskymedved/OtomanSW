@@ -9,37 +9,23 @@ using System.Xml.Serialization;
 
 namespace BeerRunResultDisplay
 {
-    public class TableModelView : INotifyPropertyChanged
+    public class TableModelView
     {
-        private List<Team> mTeams;
-
-        [XmlElement(DataType ="List<Team>", ElementName = "Teams", Type = typeof(List<Team>))]
-        public List<Team> Teams
-        {
-            get { return mTeams; }
-            set
-            {
-                mTeams = value;
-                UpdateTeams();
-            }
-        }
+        [XmlElement(DataType ="BindingList<Team>", ElementName = "Teams", Type = typeof(BindingList<Team>))]
+        public BindingList<Team> Teams { get; set; }
 
         public TableModelView()
         {
-            this.mTeams = new List<Team>();
+            this.Teams = new BindingList<Team>();
+            this.Teams.ListChanged += Teams_ListChanged;            
+        }
+        
+        private void Teams_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            this.Teams.Sort();
+            Console.WriteLine("Changed Item");
         }
 
-        #region [Inplementation of INotifyPropertyChanged]
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string aPropertyName)
-        {
-            if(PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(aPropertyName));
-            }
-        }
-        #endregion
-        
         /// <summary>
         /// Přidá nový tým
         /// </summary>
@@ -47,9 +33,9 @@ namespace BeerRunResultDisplay
         public void Add(Team aNewTeam)
         {
             if (aNewTeam != null)
-            {
+            {                
                 Teams.Add(aNewTeam);
-                UpdateTeams();
+                this.Teams.Sort();
             }
         }
 
@@ -62,7 +48,7 @@ namespace BeerRunResultDisplay
             if(aExistingTeam != null && this.Teams.Contains(aExistingTeam))
             {
                 this.Teams.Remove(aExistingTeam);
-                UpdateTeams();
+                this.Teams.Sort();
             }
         }
 
@@ -74,7 +60,7 @@ namespace BeerRunResultDisplay
         {
             try
             {
-                XmlSerializer lSerializer = new XmlSerializer(typeof(List<Team>));
+                XmlSerializer lSerializer = new XmlSerializer(typeof(BindingList<Team>));
                 using (TextWriter lWriter = new StreamWriter(aPathToFile, false, Encoding.Default))
                 {
                     lSerializer.Serialize(lWriter, this.Teams);
@@ -96,23 +82,15 @@ namespace BeerRunResultDisplay
             {
                 using (FileStream lFs = new FileStream(aPathToFile, FileMode.Open))
                 {
-                    XmlSerializer lSerializer = new XmlSerializer(typeof(List<Team>));
-                    this.Teams = (List<Team>)(lSerializer.Deserialize(lFs));
+                    XmlSerializer lSerializer = new XmlSerializer(typeof(BindingList<Team>));
+                    this.Teams = (BindingList<Team>)(lSerializer.Deserialize(lFs));                    
+                    this.Teams.Sort();
                 }
             }            
             catch (Exception lEx)
             {
                 throw lEx;
             }
-        }
-
-        /// <summary>
-        /// Metoda která by měla obsloužit jakoukoli změnu nad listem týmů
-        /// </summary>
-        public void UpdateTeams()
-        {
-            Teams.Sort();
-            NotifyPropertyChanged("Teams");
-        }
+        }        
     }
 }

@@ -133,7 +133,7 @@
             // 
             this.mTbStart.Location = new System.Drawing.Point(104, 56);
             this.mTbStart.Name = "mTbStart";
-            this.mTbStart.Size = new System.Drawing.Size(113, 20);
+            this.mTbStart.Size = new System.Drawing.Size(68, 20);
             this.mTbStart.TabIndex = 2;
             this.mTbStart.Validating += new System.ComponentModel.CancelEventHandler(this.mTbStart_Validating);
             // 
@@ -141,7 +141,7 @@
             // 
             this.mTbEnd.Location = new System.Drawing.Point(104, 82);
             this.mTbEnd.Name = "mTbEnd";
-            this.mTbEnd.Size = new System.Drawing.Size(113, 20);
+            this.mTbEnd.Size = new System.Drawing.Size(68, 20);
             this.mTbEnd.TabIndex = 3;
             this.mTbEnd.Validating += new System.ComponentModel.CancelEventHandler(this.mTbEnd_Validating);
             // 
