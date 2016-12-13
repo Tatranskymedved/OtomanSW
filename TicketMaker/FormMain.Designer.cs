@@ -43,7 +43,9 @@
             this.mGrpBoxEnterTicketNumbering = new System.Windows.Forms.GroupBox();
             this.mTabControlTicketType = new System.Windows.Forms.TabControl();
             this.mTabPageEatDrinkTicket = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.mNumUDEatDrinkFontSize = new System.Windows.Forms.NumericUpDown();
+            this.mLblEatDrinkTicketFontSize = new System.Windows.Forms.Label();
+            this.mGrpBoxEatDrinkTicketNumbering = new System.Windows.Forms.GroupBox();
             this.mNumUDEatDrinkTicketXMove = new System.Windows.Forms.NumericUpDown();
             this.mNumUDEatDrinkTicketFrom = new System.Windows.Forms.NumericUpDown();
             this.mNumUDEatDrinkTicketYMove = new System.Windows.Forms.NumericUpDown();
@@ -63,8 +65,9 @@
             this.mLblOutputPath = new System.Windows.Forms.Label();
             this.mTbOutputPath = new System.Windows.Forms.TextBox();
             this.mTbInputPath = new System.Windows.Forms.TextBox();
-            this.mNumUDEatDrinkFontSize = new System.Windows.Forms.NumericUpDown();
-            this.mLblEatDrinkTicketFontSize = new System.Windows.Forms.Label();
+            this.mGrpBoxPreview = new System.Windows.Forms.GroupBox();
+            this.mBtnPreview = new System.Windows.Forms.Button();
+            this.mPanelPreview = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEnterTicketFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEnterTicketTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEnterTicketXMove)).BeginInit();
@@ -72,23 +75,23 @@
             this.mGrpBoxEnterTicketNumbering.SuspendLayout();
             this.mTabControlTicketType.SuspendLayout();
             this.mTabPageEatDrinkTicket.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkFontSize)).BeginInit();
+            this.mGrpBoxEatDrinkTicketNumbering.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkTicketXMove)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkTicketFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkTicketYMove)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkTicketTo)).BeginInit();
             this.mTabPageEntryTicket.SuspendLayout();
             this.mGrpBoxEnterTicketPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkFontSize)).BeginInit();
+            this.mGrpBoxPreview.SuspendLayout();
             this.SuspendLayout();
             // 
             // mBtnEnterTicketCreate
             // 
-            this.mBtnEnterTicketCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.mBtnEnterTicketCreate.Enabled = false;
-            this.mBtnEnterTicketCreate.Location = new System.Drawing.Point(414, 92);
+            this.mBtnEnterTicketCreate.Location = new System.Drawing.Point(250, 87);
             this.mBtnEnterTicketCreate.Name = "mBtnEnterTicketCreate";
-            this.mBtnEnterTicketCreate.Size = new System.Drawing.Size(126, 46);
+            this.mBtnEnterTicketCreate.Size = new System.Drawing.Size(159, 46);
             this.mBtnEnterTicketCreate.TabIndex = 0;
             this.mBtnEnterTicketCreate.Text = "Vytvořit vstupenku";
             this.mBtnEnterTicketCreate.UseVisualStyleBackColor = true;
@@ -154,11 +157,9 @@
             // 
             // mProgressBarEnterTicketCreated
             // 
-            this.mProgressBarEnterTicketCreated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mProgressBarEnterTicketCreated.Location = new System.Drawing.Point(7, 144);
+            this.mProgressBarEnterTicketCreated.Location = new System.Drawing.Point(7, 139);
             this.mProgressBarEnterTicketCreated.Name = "mProgressBarEnterTicketCreated";
-            this.mProgressBarEnterTicketCreated.Size = new System.Drawing.Size(533, 23);
+            this.mProgressBarEnterTicketCreated.Size = new System.Drawing.Size(402, 23);
             this.mProgressBarEnterTicketCreated.TabIndex = 4;
             // 
             // mOpenFileDialogInput
@@ -241,7 +242,6 @@
             // 
             // mGrpBoxEnterTicketNumbering
             // 
-            this.mGrpBoxEnterTicketNumbering.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.mGrpBoxEnterTicketNumbering.Controls.Add(this.mNumUDEnterTicketXMove);
             this.mGrpBoxEnterTicketNumbering.Controls.Add(this.mNumUDEnterTicketFrom);
             this.mGrpBoxEnterTicketNumbering.Controls.Add(this.mNumUDEnterTicketYMove);
@@ -259,49 +259,78 @@
             // 
             // mTabControlTicketType
             // 
-            this.mTabControlTicketType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mTabControlTicketType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.mTabControlTicketType.Controls.Add(this.mTabPageEatDrinkTicket);
             this.mTabControlTicketType.Controls.Add(this.mTabPageEntryTicket);
             this.mTabControlTicketType.Location = new System.Drawing.Point(1, 59);
             this.mTabControlTicketType.Name = "mTabControlTicketType";
             this.mTabControlTicketType.SelectedIndex = 0;
-            this.mTabControlTicketType.Size = new System.Drawing.Size(557, 201);
+            this.mTabControlTicketType.Size = new System.Drawing.Size(426, 191);
             this.mTabControlTicketType.TabIndex = 11;
             // 
             // mTabPageEatDrinkTicket
             // 
             this.mTabPageEatDrinkTicket.Controls.Add(this.mNumUDEatDrinkFontSize);
             this.mTabPageEatDrinkTicket.Controls.Add(this.mLblEatDrinkTicketFontSize);
-            this.mTabPageEatDrinkTicket.Controls.Add(this.groupBox2);
+            this.mTabPageEatDrinkTicket.Controls.Add(this.mGrpBoxEatDrinkTicketNumbering);
             this.mTabPageEatDrinkTicket.Controls.Add(this.mBtnEatDrinkTicketCreate);
             this.mTabPageEatDrinkTicket.Controls.Add(this.mProgressBarEatDrinkTicketCreated);
             this.mTabPageEatDrinkTicket.Location = new System.Drawing.Point(4, 22);
             this.mTabPageEatDrinkTicket.Name = "mTabPageEatDrinkTicket";
             this.mTabPageEatDrinkTicket.Padding = new System.Windows.Forms.Padding(3);
-            this.mTabPageEatDrinkTicket.Size = new System.Drawing.Size(549, 175);
+            this.mTabPageEatDrinkTicket.Size = new System.Drawing.Size(418, 165);
             this.mTabPageEatDrinkTicket.TabIndex = 1;
             this.mTabPageEatDrinkTicket.Text = "Chlastenky/Stravenky";
             this.mTabPageEatDrinkTicket.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // mNumUDEatDrinkFontSize
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.mNumUDEatDrinkTicketXMove);
-            this.groupBox2.Controls.Add(this.mNumUDEatDrinkTicketFrom);
-            this.groupBox2.Controls.Add(this.mNumUDEatDrinkTicketYMove);
-            this.groupBox2.Controls.Add(this.mNumUDEatDrinkTicketTo);
-            this.groupBox2.Controls.Add(this.mLblEatDrinkTicketFrom);
-            this.groupBox2.Controls.Add(this.mLblEatDrinkTicketXMove);
-            this.groupBox2.Controls.Add(this.mLblEatDrinkTicketYMove);
-            this.groupBox2.Controls.Add(this.mLblEatDrinkTicketTo);
-            this.groupBox2.Location = new System.Drawing.Point(7, 8);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(237, 125);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Číslování";
+            this.mNumUDEatDrinkFontSize.Location = new System.Drawing.Point(330, 28);
+            this.mNumUDEatDrinkFontSize.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.mNumUDEatDrinkFontSize.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.mNumUDEatDrinkFontSize.Name = "mNumUDEatDrinkFontSize";
+            this.mNumUDEatDrinkFontSize.Size = new System.Drawing.Size(79, 20);
+            this.mNumUDEatDrinkFontSize.TabIndex = 21;
+            this.mNumUDEatDrinkFontSize.Value = new decimal(new int[] {
+            70,
+            0,
+            0,
+            0});
+            // 
+            // mLblEatDrinkTicketFontSize
+            // 
+            this.mLblEatDrinkTicketFontSize.AutoSize = true;
+            this.mLblEatDrinkTicketFontSize.Location = new System.Drawing.Point(250, 30);
+            this.mLblEatDrinkTicketFontSize.Name = "mLblEatDrinkTicketFontSize";
+            this.mLblEatDrinkTicketFontSize.Size = new System.Drawing.Size(79, 13);
+            this.mLblEatDrinkTicketFontSize.TabIndex = 20;
+            this.mLblEatDrinkTicketFontSize.Text = "Velikost písma:";
+            // 
+            // mGrpBoxEatDrinkTicketNumbering
+            // 
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mNumUDEatDrinkTicketXMove);
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mNumUDEatDrinkTicketFrom);
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mNumUDEatDrinkTicketYMove);
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mNumUDEatDrinkTicketTo);
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mLblEatDrinkTicketFrom);
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mLblEatDrinkTicketXMove);
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mLblEatDrinkTicketYMove);
+            this.mGrpBoxEatDrinkTicketNumbering.Controls.Add(this.mLblEatDrinkTicketTo);
+            this.mGrpBoxEatDrinkTicketNumbering.Location = new System.Drawing.Point(7, 8);
+            this.mGrpBoxEatDrinkTicketNumbering.Name = "mGrpBoxEatDrinkTicketNumbering";
+            this.mGrpBoxEatDrinkTicketNumbering.Size = new System.Drawing.Size(237, 125);
+            this.mGrpBoxEatDrinkTicketNumbering.TabIndex = 19;
+            this.mGrpBoxEatDrinkTicketNumbering.TabStop = false;
+            this.mGrpBoxEatDrinkTicketNumbering.Text = "Číslování";
             // 
             // mNumUDEatDrinkTicketXMove
             // 
@@ -429,11 +458,10 @@
             // 
             // mBtnEatDrinkTicketCreate
             // 
-            this.mBtnEatDrinkTicketCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.mBtnEatDrinkTicketCreate.Enabled = false;
-            this.mBtnEatDrinkTicketCreate.Location = new System.Drawing.Point(414, 92);
+            this.mBtnEatDrinkTicketCreate.Location = new System.Drawing.Point(250, 87);
             this.mBtnEatDrinkTicketCreate.Name = "mBtnEatDrinkTicketCreate";
-            this.mBtnEatDrinkTicketCreate.Size = new System.Drawing.Size(126, 46);
+            this.mBtnEatDrinkTicketCreate.Size = new System.Drawing.Size(159, 46);
             this.mBtnEatDrinkTicketCreate.TabIndex = 11;
             this.mBtnEatDrinkTicketCreate.Text = "Vytvořit chlastenku/stravenku";
             this.mBtnEatDrinkTicketCreate.UseVisualStyleBackColor = true;
@@ -441,11 +469,9 @@
             // 
             // mProgressBarEatDrinkTicketCreated
             // 
-            this.mProgressBarEatDrinkTicketCreated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mProgressBarEatDrinkTicketCreated.Location = new System.Drawing.Point(7, 144);
+            this.mProgressBarEatDrinkTicketCreated.Location = new System.Drawing.Point(7, 139);
             this.mProgressBarEatDrinkTicketCreated.Name = "mProgressBarEatDrinkTicketCreated";
-            this.mProgressBarEatDrinkTicketCreated.Size = new System.Drawing.Size(533, 23);
+            this.mProgressBarEatDrinkTicketCreated.Size = new System.Drawing.Size(402, 23);
             this.mProgressBarEatDrinkTicketCreated.TabIndex = 14;
             // 
             // mTabPageEntryTicket
@@ -457,14 +483,13 @@
             this.mTabPageEntryTicket.Location = new System.Drawing.Point(4, 22);
             this.mTabPageEntryTicket.Name = "mTabPageEntryTicket";
             this.mTabPageEntryTicket.Padding = new System.Windows.Forms.Padding(3);
-            this.mTabPageEntryTicket.Size = new System.Drawing.Size(549, 175);
+            this.mTabPageEntryTicket.Size = new System.Drawing.Size(418, 165);
             this.mTabPageEntryTicket.TabIndex = 0;
             this.mTabPageEntryTicket.Text = "Vstupenky";
             this.mTabPageEntryTicket.UseVisualStyleBackColor = true;
             // 
             // mGrpBoxEnterTicketPage
             // 
-            this.mGrpBoxEnterTicketPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.mGrpBoxEnterTicketPage.Controls.Add(this.mCheckLandscape);
             this.mGrpBoxEnterTicketPage.Location = new System.Drawing.Point(250, 8);
             this.mGrpBoxEnterTicketPage.Name = "mGrpBoxEnterTicketPage";
@@ -489,7 +514,7 @@
             // mBtnOutputPath
             // 
             this.mBtnOutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mBtnOutputPath.Location = new System.Drawing.Point(470, 29);
+            this.mBtnOutputPath.Location = new System.Drawing.Point(902, 29);
             this.mBtnOutputPath.Name = "mBtnOutputPath";
             this.mBtnOutputPath.Size = new System.Drawing.Size(75, 23);
             this.mBtnOutputPath.TabIndex = 16;
@@ -509,7 +534,7 @@
             // mBtnInputPath
             // 
             this.mBtnInputPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mBtnInputPath.Location = new System.Drawing.Point(470, 3);
+            this.mBtnInputPath.Location = new System.Drawing.Point(902, 3);
             this.mBtnInputPath.Name = "mBtnInputPath";
             this.mBtnInputPath.Size = new System.Drawing.Size(75, 23);
             this.mBtnInputPath.TabIndex = 17;
@@ -532,7 +557,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mTbOutputPath.Location = new System.Drawing.Point(52, 31);
             this.mTbOutputPath.Name = "mTbOutputPath";
-            this.mTbOutputPath.Size = new System.Drawing.Size(412, 20);
+            this.mTbOutputPath.Size = new System.Drawing.Size(844, 20);
             this.mTbOutputPath.TabIndex = 14;
             this.mTbOutputPath.TextChanged += new System.EventHandler(this.mTbInputOutput_TextChanged);
             // 
@@ -542,48 +567,53 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mTbInputPath.Location = new System.Drawing.Point(52, 5);
             this.mTbInputPath.Name = "mTbInputPath";
-            this.mTbInputPath.Size = new System.Drawing.Size(412, 20);
+            this.mTbInputPath.Size = new System.Drawing.Size(844, 20);
             this.mTbInputPath.TabIndex = 15;
             this.mTbInputPath.TextChanged += new System.EventHandler(this.mTbInputOutput_TextChanged);
             // 
-            // mNumUDEatDrinkFontSize
+            // mGrpBoxPreview
             // 
-            this.mNumUDEatDrinkFontSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.mGrpBoxPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mNumUDEatDrinkFontSize.Location = new System.Drawing.Point(344, 28);
-            this.mNumUDEatDrinkFontSize.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.mNumUDEatDrinkFontSize.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.mNumUDEatDrinkFontSize.Name = "mNumUDEatDrinkFontSize";
-            this.mNumUDEatDrinkFontSize.Size = new System.Drawing.Size(83, 20);
-            this.mNumUDEatDrinkFontSize.TabIndex = 21;
-            this.mNumUDEatDrinkFontSize.Value = new decimal(new int[] {
-            70,
-            0,
-            0,
-            0});
+            this.mGrpBoxPreview.Controls.Add(this.mBtnPreview);
+            this.mGrpBoxPreview.Controls.Add(this.mPanelPreview);
+            this.mGrpBoxPreview.Location = new System.Drawing.Point(430, 59);
+            this.mGrpBoxPreview.Name = "mGrpBoxPreview";
+            this.mGrpBoxPreview.Size = new System.Drawing.Size(547, 191);
+            this.mGrpBoxPreview.TabIndex = 18;
+            this.mGrpBoxPreview.TabStop = false;
+            this.mGrpBoxPreview.Text = "Ukázka";
             // 
-            // mLblEatDrinkTicketFontSize
+            // mBtnPreview
             // 
-            this.mLblEatDrinkTicketFontSize.AutoSize = true;
-            this.mLblEatDrinkTicketFontSize.Location = new System.Drawing.Point(259, 30);
-            this.mLblEatDrinkTicketFontSize.Name = "mLblEatDrinkTicketFontSize";
-            this.mLblEatDrinkTicketFontSize.Size = new System.Drawing.Size(79, 13);
-            this.mLblEatDrinkTicketFontSize.TabIndex = 20;
-            this.mLblEatDrinkTicketFontSize.Text = "Velikost písma:";
+            this.mBtnPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mBtnPreview.Enabled = false;
+            this.mBtnPreview.Location = new System.Drawing.Point(493, 22);
+            this.mBtnPreview.Name = "mBtnPreview";
+            this.mBtnPreview.Size = new System.Drawing.Size(48, 162);
+            this.mBtnPreview.TabIndex = 1;
+            this.mBtnPreview.Text = "Ukaž";
+            this.mBtnPreview.UseVisualStyleBackColor = true;
+            this.mBtnPreview.Click += new System.EventHandler(this.mBtnPreview_Click);
+            // 
+            // mPanelPreview
+            // 
+            this.mPanelPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mPanelPreview.Location = new System.Drawing.Point(7, 22);
+            this.mPanelPreview.Name = "mPanelPreview";
+            this.mPanelPreview.Size = new System.Drawing.Size(480, 163);
+            this.mPanelPreview.TabIndex = 0;
+            this.mPanelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.mPanelPreview_Paint);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 258);
+            this.ClientSize = new System.Drawing.Size(989, 258);
+            this.Controls.Add(this.mGrpBoxPreview);
             this.Controls.Add(this.mBtnOutputPath);
             this.Controls.Add(this.mLblInputPath);
             this.Controls.Add(this.mBtnInputPath);
@@ -591,6 +621,7 @@
             this.Controls.Add(this.mTbOutputPath);
             this.Controls.Add(this.mTbInputPath);
             this.Controls.Add(this.mTabControlTicketType);
+            this.MinimumSize = new System.Drawing.Size(1005, 297);
             this.Name = "FormMain";
             this.ShowIcon = false;
             this.Text = "TicketMaker - Turbo©";
@@ -603,8 +634,9 @@
             this.mTabControlTicketType.ResumeLayout(false);
             this.mTabPageEatDrinkTicket.ResumeLayout(false);
             this.mTabPageEatDrinkTicket.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkFontSize)).EndInit();
+            this.mGrpBoxEatDrinkTicketNumbering.ResumeLayout(false);
+            this.mGrpBoxEatDrinkTicketNumbering.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkTicketXMove)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkTicketFrom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkTicketYMove)).EndInit();
@@ -612,7 +644,7 @@
             this.mTabPageEntryTicket.ResumeLayout(false);
             this.mGrpBoxEnterTicketPage.ResumeLayout(false);
             this.mGrpBoxEnterTicketPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mNumUDEatDrinkFontSize)).EndInit();
+            this.mGrpBoxPreview.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -636,7 +668,7 @@
         private System.Windows.Forms.TabControl mTabControlTicketType;
         private System.Windows.Forms.TabPage mTabPageEntryTicket;
         private System.Windows.Forms.TabPage mTabPageEatDrinkTicket;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox mGrpBoxEatDrinkTicketNumbering;
         private System.Windows.Forms.NumericUpDown mNumUDEatDrinkTicketXMove;
         private System.Windows.Forms.NumericUpDown mNumUDEatDrinkTicketFrom;
         private System.Windows.Forms.NumericUpDown mNumUDEatDrinkTicketYMove;
@@ -657,6 +689,9 @@
         private System.Windows.Forms.TextBox mTbInputPath;
         private System.Windows.Forms.NumericUpDown mNumUDEatDrinkFontSize;
         private System.Windows.Forms.Label mLblEatDrinkTicketFontSize;
+        private System.Windows.Forms.GroupBox mGrpBoxPreview;
+        private System.Windows.Forms.Panel mPanelPreview;
+        private System.Windows.Forms.Button mBtnPreview;
     }
 }
 

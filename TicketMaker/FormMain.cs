@@ -109,16 +109,35 @@ namespace TicketMaker
         /// </summary>
         private void mTbInputOutput_TextChanged(object sender, EventArgs e)
         {
-            if (mTbInputPath.Text != "" && mTbOutputPath.Text != "" && File.Exists(mTbInputPath.Text))
+            if (mTbInputPath.Text != "" && File.Exists(mTbInputPath.Text))
             {
-                mBtnEnterTicketCreate.Enabled = true;
-                mBtnEatDrinkTicketCreate.Enabled = true;
+                if (mTbOutputPath.Text != "")
+                {
+                    mBtnEnterTicketCreate.Enabled = true;
+                    mBtnEatDrinkTicketCreate.Enabled = true;
+                }
+                else
+                {
+
+                    mBtnEnterTicketCreate.Enabled = false;
+                    mBtnEatDrinkTicketCreate.Enabled = false;
+                }
+                mBtnPreview.Enabled = true;
             }
             else
             {
                 mBtnEnterTicketCreate.Enabled = false;
                 mBtnEatDrinkTicketCreate.Enabled = false;
+                mBtnPreview.Enabled = false;
             }
+        }
+
+        /// <summary>
+        /// Vykreslení ukázky daného typu (EatDrink ticket nebo Entry ticket)
+        /// </summary>
+        private void mBtnPreview_Click(object sender, EventArgs e)
+        {
+            mPanelPreview.Refresh();
         }
 
         #endregion
@@ -145,6 +164,7 @@ namespace TicketMaker
                 {
                     this.UpdateProgress(this.mProgressBarEnterTicketCreated, i, mNumUDEnterTicketTo.Value);
 
+                    
                     var nCopyOfImage = (System.Drawing.Image) lImage.Clone();
                     DrawNumber(i, ref nCopyOfImage, lXMove, lYMove, new Font("Comic Sans MS", 90f, FontStyle.Regular, GraphicsUnit.Point));
                     mImages.Add(Image.GetInstance(nCopyOfImage, ImageFormat.Jpeg));
@@ -293,5 +313,45 @@ namespace TicketMaker
         }
 
         #endregion
+
+        private void mPanelPreview_Paint(object sender, PaintEventArgs e)
+        {
+
+            try
+            { 
+                if (!mBtnPreview.Enabled) return;
+
+                using (Graphics lGraphics = e.Graphics)
+                {
+                    if (mTabControlTicketType.SelectedIndex == 0) //Chlastenka/stravenka
+                    {
+                        var lOriginFile = mTbInputPath.Text;
+                        var lImage = System.Drawing.Image.FromFile(lOriginFile);
+                        int lXMove = Convert.ToInt32(mNumUDEatDrinkTicketXMove.Value);
+                        int lYMove = Convert.ToInt32(mNumUDEatDrinkTicketYMove.Value);
+                        float lFontSize = (float)(mNumUDEatDrinkFontSize.Value);
+
+                        DrawNumber(mNumUDEatDrinkTicketFrom.Value, ref lImage, lXMove, lYMove, new Font("Comic Sans MS", lFontSize, FontStyle.Regular, GraphicsUnit.Point));
+
+                        lGraphics.DrawImage(lImage, new Point(0, 0));
+                    }
+                    else //Vstupenka
+                    {
+                        var lOriginFile = mTbInputPath.Text;
+                        var lImage = System.Drawing.Image.FromFile(lOriginFile);
+                        int lXMove = Convert.ToInt32(mNumUDEnterTicketXMove.Value);
+                        int lYMove = Convert.ToInt32(mNumUDEnterTicketYMove.Value);
+
+                        DrawNumber(mNumUDEnterTicketFrom.Value, ref lImage, lXMove, lYMove, new Font("Comic Sans MS", 90f, FontStyle.Regular, GraphicsUnit.Point));
+
+                        lGraphics.DrawImage(lImage, new Point(0, 0));
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+        }
     }
 }
