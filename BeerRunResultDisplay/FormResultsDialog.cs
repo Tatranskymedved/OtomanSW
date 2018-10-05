@@ -61,5 +61,18 @@ namespace BeerRunResultDisplay
             var lHeaderBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, lGrid.RowHeadersWidth, e.RowBounds.Height);
             e.Graphics.DrawString(lRowNum, this.Font, SystemBrushes.ControlText, lHeaderBounds, lCenterFormat);
         }
+
+        private void mTableMain_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var lSelectedTeam = this.mParentForm.TableModelView.Teams[e.RowIndex];
+            
+            var lEditTeamForm = new FormNewEditTeam(lSelectedTeam.Clone() as Team);
+
+            DialogResult lDialogResult = lEditTeamForm.ShowDialog();
+            if(lDialogResult.Equals(DialogResult.OK))
+            {
+                this.mParentForm.TableModelView.Edit(lEditTeamForm.Team, e.RowIndex);
+            }
+        }
     }
 }

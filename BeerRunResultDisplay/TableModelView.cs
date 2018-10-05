@@ -52,6 +52,15 @@ namespace BeerRunResultDisplay
             }
         }
 
+        public void Edit(Team aEditedTeam, int aIndex)
+        {
+            if(aEditedTeam != null && this.Teams.Count > aIndex)
+            {
+                this.Teams[aIndex] = aEditedTeam;
+                this.Teams.Sort();
+            }
+        }
+
         /// <summary>
         /// Uloží aktuální stav týmů do XML souboru
         /// </summary>

@@ -1,6 +1,6 @@
 ﻿namespace BeerRunResultDisplay
 {
-    partial class FormNewTeam
+    partial class FormNewEditTeam
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.mLblEnd = new System.Windows.Forms.Label();
             this.mLblPenaltyMinutes = new System.Windows.Forms.Label();
             this.mBtnCancel = new System.Windows.Forms.Button();
-            this.mBtnAdd = new System.Windows.Forms.Button();
+            this.mBtnAddEdit = new System.Windows.Forms.Button();
             this.mTbTeamName = new System.Windows.Forms.TextBox();
             this.mTbTeamMembers = new System.Windows.Forms.TextBox();
             this.mTbStart = new System.Windows.Forms.TextBox();
@@ -99,17 +99,17 @@
             this.mBtnCancel.Text = "Zrušit";
             this.mBtnCancel.UseVisualStyleBackColor = true;
             // 
-            // mBtnAdd
+            // mBtnAddEdit
             // 
-            this.mBtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.mBtnAdd.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.mBtnAdd.Location = new System.Drawing.Point(218, 160);
-            this.mBtnAdd.Name = "mBtnAdd";
-            this.mBtnAdd.Size = new System.Drawing.Size(75, 23);
-            this.mBtnAdd.TabIndex = 5;
-            this.mBtnAdd.Text = "Přidat";
-            this.mBtnAdd.UseVisualStyleBackColor = true;
-            this.mBtnAdd.Click += new System.EventHandler(this.mBtnAdd_Click);
+            this.mBtnAddEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mBtnAddEdit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.mBtnAddEdit.Location = new System.Drawing.Point(218, 160);
+            this.mBtnAddEdit.Name = "mBtnAddEdit";
+            this.mBtnAddEdit.Size = new System.Drawing.Size(75, 23);
+            this.mBtnAddEdit.TabIndex = 5;
+            this.mBtnAddEdit.Text = "Přidat";
+            this.mBtnAddEdit.UseVisualStyleBackColor = true;
+            this.mBtnAddEdit.Click += new System.EventHandler(this.mBtnAddEdit_Click);
             // 
             // mTbTeamName
             // 
@@ -162,7 +162,7 @@
             0,
             0});
             // 
-            // FormNewTeam
+            // FormNewEditTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,14 +172,14 @@
             this.Controls.Add(this.mTbStart);
             this.Controls.Add(this.mTbTeamMembers);
             this.Controls.Add(this.mTbTeamName);
-            this.Controls.Add(this.mBtnAdd);
+            this.Controls.Add(this.mBtnAddEdit);
             this.Controls.Add(this.mBtnCancel);
             this.Controls.Add(this.mLblPenaltyMinutes);
             this.Controls.Add(this.mLblEnd);
             this.Controls.Add(this.mLblStart);
             this.Controls.Add(this.mLblTeamMembers);
             this.Controls.Add(this.mLblTeamName);
-            this.Name = "FormNewTeam";
+            this.Name = "FormNewEditTeam";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Přidat tým";
@@ -197,7 +197,7 @@
         private System.Windows.Forms.Label mLblEnd;
         private System.Windows.Forms.Label mLblPenaltyMinutes;
         private System.Windows.Forms.Button mBtnCancel;
-        private System.Windows.Forms.Button mBtnAdd;
+        private System.Windows.Forms.Button mBtnAddEdit;
         private System.Windows.Forms.TextBox mTbTeamName;
         private System.Windows.Forms.TextBox mTbTeamMembers;
         private System.Windows.Forms.TextBox mTbStart;

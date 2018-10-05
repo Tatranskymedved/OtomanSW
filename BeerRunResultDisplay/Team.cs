@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace BeerRunResultDisplay
 {   
     [Serializable]
-    public class Team : IComparable, INotifyPropertyChanged
+    public class Team : IComparable, INotifyPropertyChanged, ICloneable
     {   
         private string mTeamName;
         [XmlElement(ElementName = "TeamName", Type = typeof(string))]
@@ -60,6 +60,20 @@ namespace BeerRunResultDisplay
         public override string ToString()
         {
             return this.TeamName;
+        }
+
+        public object Clone()
+        {
+            return new Team
+            {
+                TeamName = this.TeamName,
+                StartTime = this.StartTime,
+                EndTime = this.EndTime,
+                LongEndTime = this.LongEndTime,
+                LongStartTime = this.LongStartTime,
+                PenaltyMinutes = this.PenaltyMinutes,
+                TeamMembersName = this.TeamMembersName
+            };
         }
     }
 }

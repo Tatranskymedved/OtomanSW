@@ -37,9 +37,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mTableMain = new System.Windows.Forms.DataGridView();
             this.teamsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tableModelViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mPanelOtaHead = new System.Windows.Forms.Panel();
             this.teamsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tableModelViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.teamNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MembersName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +48,8 @@
             this.TotalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mTableMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableModelViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableModelViewBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mTableMain
@@ -90,6 +90,7 @@
             this.mTableMain.Name = "mTableMain";
             this.mTableMain.Size = new System.Drawing.Size(814, 442);
             this.mTableMain.TabIndex = 0;
+            this.mTableMain.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mTableMain_CellContentDoubleClick);
             this.mTableMain.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.mTableMain_CellEndEdit);
             this.mTableMain.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.mTableMain_CellFormatting);
             this.mTableMain.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.mTableMain_RowPostPaint);
@@ -98,10 +99,6 @@
             // 
             this.teamsBindingSource1.DataMember = "Teams";
             this.teamsBindingSource1.DataSource = this.tableModelViewBindingSource;
-            // 
-            // tableModelViewBindingSource
-            // 
-            this.tableModelViewBindingSource.DataSource = typeof(BeerRunResultDisplay.TableModelView);
             // 
             // mPanelOtaHead
             // 
@@ -117,12 +114,17 @@
             this.teamsBindingSource.DataMember = "Teams";
             this.teamsBindingSource.DataSource = this.tableModelViewBindingSource;
             // 
+            // tableModelViewBindingSource
+            // 
+            this.tableModelViewBindingSource.DataSource = typeof(BeerRunResultDisplay.TableModelView);
+            // 
             // teamNameDataGridViewTextBoxColumn
             // 
             this.teamNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.teamNameDataGridViewTextBoxColumn.DataPropertyName = "TeamName";
             this.teamNameDataGridViewTextBoxColumn.HeaderText = "Název týmu";
             this.teamNameDataGridViewTextBoxColumn.Name = "teamNameDataGridViewTextBoxColumn";
+            this.teamNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.teamNameDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MembersName
@@ -131,6 +133,7 @@
             this.MembersName.DataPropertyName = "TeamMembersName";
             this.MembersName.HeaderText = "Členové";
             this.MembersName.Name = "MembersName";
+            this.MembersName.ReadOnly = true;
             this.MembersName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // startTimeDataGridViewTextBoxColumn
@@ -143,6 +146,7 @@
             this.startTimeDataGridViewTextBoxColumn.HeaderText = "Start";
             this.startTimeDataGridViewTextBoxColumn.MinimumWidth = 120;
             this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
+            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
             this.startTimeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.startTimeDataGridViewTextBoxColumn.Width = 120;
             // 
@@ -156,6 +160,7 @@
             this.endTimeDataGridViewTextBoxColumn.HeaderText = "Cíl";
             this.endTimeDataGridViewTextBoxColumn.MinimumWidth = 120;
             this.endTimeDataGridViewTextBoxColumn.Name = "endTimeDataGridViewTextBoxColumn";
+            this.endTimeDataGridViewTextBoxColumn.ReadOnly = true;
             this.endTimeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.endTimeDataGridViewTextBoxColumn.Width = 120;
             // 
@@ -165,6 +170,7 @@
             this.PenaltyMinutes.DataPropertyName = "PenaltyMinutes";
             this.PenaltyMinutes.HeaderText = "Trestné body";
             this.PenaltyMinutes.Name = "PenaltyMinutes";
+            this.PenaltyMinutes.ReadOnly = true;
             this.PenaltyMinutes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.PenaltyMinutes.Width = 139;
             // 
@@ -193,8 +199,8 @@
             this.Text = "Pivní běh - výsledky";
             ((System.ComponentModel.ISupportInitialize)(this.mTableMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableModelViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableModelViewBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

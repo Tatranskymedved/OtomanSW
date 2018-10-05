@@ -33,33 +33,37 @@ namespace BeerRunResultDisplay
         }
         private static void Sort<T>(this BindingList<T> bindingList, IComparer<T> p_Comparer, Comparison<T> p_Comparison)
         {
-
-            //Extract items and sort separately
-            List<T> sortList = new List<T>();
-            bindingList.ForEach(item => sortList.Add(item));//Extension method for this call
-            if (p_Comparison == null)
-            {
-                sortList.Sort(p_Comparer);
-            }//if
-            else
-            {
-                sortList.Sort(p_Comparison);
-            }//else
-
-            //Disable notifications, rebuild, and re-enable notifications
-            bool oldRaise = bindingList.RaiseListChangedEvents;
-            bindingList.RaiseListChangedEvents = false;
+            //TODO: Odstranit vnější try-catch - prasárna
             try
             {
-                bindingList.Clear();
-                sortList.ForEach(item => bindingList.Add(item));
-            }
-            finally
-            {
-                bindingList.RaiseListChangedEvents = oldRaise;
-                bindingList.ResetBindings();
-            }
+                //Extract items and sort separately
+                List<T> sortList = new List<T>();
+                bindingList.ForEach(item => sortList.Add(item));//Extension method for this call
+                if (p_Comparison == null)
+                {
+                    sortList.Sort(p_Comparer);
+                }//if
+                else
+                {
+                    sortList.Sort(p_Comparison);
+                }//else
 
+                //Disable notifications, rebuild, and re-enable notifications
+                bool oldRaise = bindingList.RaiseListChangedEvents;
+                bindingList.RaiseListChangedEvents = false;
+                try
+                {
+                    bindingList.Clear();
+                    sortList.ForEach(item => bindingList.Add(item));
+                }
+                finally
+                {
+                    bindingList.RaiseListChangedEvents = oldRaise;
+                    bindingList.ResetBindings();
+                }
+            }
+            catch
+            { }
         }
 
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)

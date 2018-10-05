@@ -95,7 +95,7 @@ namespace BeerRunResultDisplay
         /// </summary>
         private void mBtnAddNewTeam_Click(object sender, EventArgs e)
         {
-            var lNewTeamForm = new FormNewTeam();
+            var lNewTeamForm = new FormNewEditTeam();
             DialogResult lDialogResult = lNewTeamForm.ShowDialog();
             if(lDialogResult.Equals(DialogResult.OK))
             {
