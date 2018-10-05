@@ -27,6 +27,7 @@ namespace BeerRunResultDisplay
             this.Team = aEditedTeam;
             this.IsEdit = true;
             this.mBtnAddEdit.Text = @"Upravit";
+            this.Text = @"Upravit tým";
 
             this.mTbTeamName.Text = this.Team.TeamName;
             this.mTbTeamMembers.Text = this.Team.TeamMembersName;
@@ -35,7 +36,7 @@ namespace BeerRunResultDisplay
             this.mNumUDPenaltyMinutes.Value = this.Team.PenaltyMinutes;
         }
 
-        private void mBtnAddEdit_Click(object sender, EventArgs e)
+        private void mBtnAddEdit_Click(object aSender, EventArgs e)
         {
             TimeSpan lStart = TimeSpan.Parse(this.mTbStart.Text);
             TimeSpan lEnd = TimeSpan.Parse(this.mTbEnd.Text);
@@ -85,6 +86,11 @@ namespace BeerRunResultDisplay
             {
                 e.Cancel = true;
             }
+        }
+
+        private void linkLabelSetTimeNow_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            mTbEnd.Text = new TimeSpan(DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second).ToString();
         }
     }
 }

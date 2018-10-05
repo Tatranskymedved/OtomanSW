@@ -17,7 +17,7 @@ namespace BeerRunResultDisplay
         public TableModelView()
         {
             this.Teams = new BindingList<Team>();
-            this.Teams.ListChanged += Teams_ListChanged;            
+            //this.Teams.ListChanged += Teams_ListChanged;            
         }
         
         private void Teams_ListChanged(object sender, ListChangedEventArgs e)

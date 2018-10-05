@@ -124,7 +124,15 @@ namespace BeerRunResultDisplay
         /// </summary>        
         private void mTimerSave5mins_Tick(object sender, EventArgs e)
         {
-            mTableModelView.SaveState(System.IO.Path.GetTempPath() + "otomanPivniBeh-temp" + DateTime.Now.ToString("hh-MM-ss") + ".xml");
+            try
+            {
+                mTableModelView.SaveState(System.IO.Path.GetTempPath() + "otomanPivniBeh-temp" +
+                                          DateTime.Now.ToString("hh-MM-ss") + ".xml");
+            }
+            catch (Exception lEx)
+            {
+                MessageBox.Show("Nastala vyjímka při pravidelném 5min. ukládání: " + Environment.NewLine + lEx.Message);
+            }
         }
     }
 }

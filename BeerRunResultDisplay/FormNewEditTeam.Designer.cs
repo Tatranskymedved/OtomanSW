@@ -40,6 +40,7 @@
             this.mTbStart = new System.Windows.Forms.TextBox();
             this.mTbEnd = new System.Windows.Forms.TextBox();
             this.mNumUDPenaltyMinutes = new System.Windows.Forms.NumericUpDown();
+            this.linkLabelSetTimeNow = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.mNumUDPenaltyMinutes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,11 +163,23 @@
             0,
             0});
             // 
+            // linkLabelSetTimeNow
+            // 
+            this.linkLabelSetTimeNow.AutoSize = true;
+            this.linkLabelSetTimeNow.Location = new System.Drawing.Point(187, 85);
+            this.linkLabelSetTimeNow.Name = "linkLabelSetTimeNow";
+            this.linkLabelSetTimeNow.Size = new System.Drawing.Size(24, 13);
+            this.linkLabelSetTimeNow.TabIndex = 7;
+            this.linkLabelSetTimeNow.TabStop = true;
+            this.linkLabelSetTimeNow.Text = "teď";
+            this.linkLabelSetTimeNow.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSetTimeNow_LinkClicked);
+            // 
             // FormNewEditTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 216);
+            this.Controls.Add(this.linkLabelSetTimeNow);
             this.Controls.Add(this.mNumUDPenaltyMinutes);
             this.Controls.Add(this.mTbEnd);
             this.Controls.Add(this.mTbStart);
@@ -203,5 +216,6 @@
         private System.Windows.Forms.TextBox mTbStart;
         private System.Windows.Forms.TextBox mTbEnd;
         private System.Windows.Forms.NumericUpDown mNumUDPenaltyMinutes;
+        private System.Windows.Forms.LinkLabel linkLabelSetTimeNow;
     }
 }
